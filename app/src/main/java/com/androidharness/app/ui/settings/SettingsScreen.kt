@@ -390,9 +390,6 @@ fun SettingsScreen(
                         SettingsPage.PRIVACY -> PrivacySection(container, settings, scope)
                         SettingsPage.GITHUB -> GitHubIntegrationSection(container)
                         SettingsPage.SEARCH -> WebSearchSection(container)
-                        SettingsPage.MCP -> McpSection(container, onOpenPlugins = { openPage(SettingsPage.PLUGINS) },
-                            onOpenConfiguration = { openPage(SettingsPage.CONFIGURATION) })
-                        SettingsPage.TELEGRAM -> TelegramSection(container)
                         SettingsPage.WORKSPACE -> {
                             RememberedPermissionsSection(container)
                             WorkspaceSection(
@@ -411,8 +408,6 @@ fun SettingsScreen(
                             ChatsBackupSection(container)
                         }
                         SettingsPage.UPDATES -> UpdatesCard(container)
-                        SettingsPage.SYNC -> com.androidharness.app.ui.transfer.SyncSettingsSection(container)
-                        SettingsPage.FTP_SERVER -> com.androidharness.app.ui.transfer.FtpServerSection(container)
                         SettingsPage.ABOUT -> AboutSection(container)
                         SettingsPage.SKILLS, SettingsPage.USAGE, SettingsPage.SETUP -> Unit
                     }
