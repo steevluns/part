@@ -39,6 +39,12 @@ jobs:
             ln -s android-37.0 "$ANDROID_SDK_ROOT/platforms/android-37"
           fi
 
+      - name: Add Android NDK shader compiler to PATH
+        run: |
+          GLSLC_DIR="$ANDROID_SDK_ROOT/ndk/27.2.12479018/shader-tools/linux-x86_64"
+          test -x "$GLSLC_DIR/glslc"
+          echo "$GLSLC_DIR" >> "$GITHUB_PATH"
+
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
