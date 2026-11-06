@@ -286,7 +286,7 @@ internal val settingsHomePages = listOf(
     SettingsPage.LEARN,
     SettingsPage.CONNECTED_ACCOUNTS, SettingsPage.NINE_ROUTER,
     SettingsPage.LANGUAGE, SettingsPage.APPEARANCE, SettingsPage.CHAT_OPTIONS,
-    SettingsPage.MEMORY, SettingsPage.CODING, SettingsPage.RUMBLE, SettingsPage.PRIVACY,
+    SettingsPage.MEMORY, SettingsPage.CODING,
     SettingsPage.MODELS, SettingsPage.LOCAL_MODELS, SettingsPage.VOICE, SettingsPage.LIVE_MODE,
     SettingsPage.GITHUB, SettingsPage.SEARCH, SettingsPage.MCP,
     SettingsPage.TELEGRAM, SettingsPage.SYNC, SettingsPage.FTP_SERVER,
@@ -315,7 +315,11 @@ private val searchableSettingsEntries = SettingsPage.entries.map { page ->
 }
 
 /** Every searchable entry: each page, then each setting inside one. */
-internal val allSettingsEntries: List<SettingsSearchEntry> by lazy { searchableSettingsEntries + settingsControlEntries }
+private val hiddenSettingsPages = setOf(SettingsPage.RUMBLE, SettingsPage.PRIVACY)
+
+internal val allSettingsEntries: List<SettingsSearchEntry> by lazy {
+    (searchableSettingsEntries + settingsControlEntries).filterNot { it.page in hiddenSettingsPages }
+}
 
 /**
  * Ranked search over [entries]. Titles and descriptions are resolved through
