@@ -173,18 +173,6 @@ internal enum class SettingsPage(
         R.string.settings_group_connections,
         "brave tavily keyless internet",
     ),
-    MCP(
-        R.string.settings_page_mcp_title,
-        R.string.settings_page_mcp_desc,
-        R.string.settings_group_connections,
-        "mcp integrations servers transport",
-    ),
-    TELEGRAM(
-        R.string.settings_page_telegram_title,
-        R.string.settings_page_telegram_desc,
-        R.string.settings_group_connections,
-        "telegram bot remote control pairing notifications gateway",
-    ),
     WORKSPACE(
         R.string.settings_page_workspace_title,
         R.string.settings_page_workspace_desc,
@@ -216,14 +204,6 @@ internal enum class SettingsPage(
         R.string.settings_page_troubleshooting_desc,
         R.string.settings_group_app_data,
         "diagnostics help doctor repair errors storage linux shizuku ssh mcp notifications provider report",
-    ),
-    SYNC(
-        R.string.sync_title, R.string.sync_description, R.string.settings_group_connections,
-        "sync ftp sftp upload download remote folder transfer",
-    ),
-    FTP_SERVER(
-        R.string.ftp_server_title, R.string.ftp_server_description, R.string.settings_group_connections,
-        "ftp server share wifi local network files passive",
     ),
     BACKUP(
         R.string.settings_page_backup_title,
@@ -288,8 +268,7 @@ internal val settingsHomePages = listOf(
     SettingsPage.LANGUAGE, SettingsPage.APPEARANCE, SettingsPage.CHAT_OPTIONS,
     SettingsPage.MEMORY, SettingsPage.CODING,
     SettingsPage.MODELS, SettingsPage.LOCAL_MODELS, SettingsPage.VOICE, SettingsPage.LIVE_MODE,
-    SettingsPage.GITHUB, SettingsPage.SEARCH, SettingsPage.MCP,
-    SettingsPage.TELEGRAM, SettingsPage.SYNC, SettingsPage.FTP_SERVER,
+    SettingsPage.GITHUB, SettingsPage.SEARCH,
     SettingsPage.BACKGROUND, SettingsPage.STORAGE,
     SettingsPage.BACKUP, SettingsPage.USAGE, SettingsPage.TROUBLESHOOTING,
     SettingsPage.UPDATES, SettingsPage.SETUP, SettingsPage.ABOUT,
@@ -412,8 +391,6 @@ internal fun matchingSettingsPages(query: String, text: (Int) -> String): List<S
 internal fun settingsDeepLink(target: String): SettingsPage? = when (target) {
     "learn" -> SettingsPage.LEARN
     "chat-agents" -> SettingsPage.CHAT_OPTIONS
-    "sync" -> SettingsPage.SYNC
-    "ftp-server" -> SettingsPage.FTP_SERVER
     "updates" -> SettingsPage.UPDATES
     "language" -> SettingsPage.LANGUAGE
     "troubleshooting" -> SettingsPage.TROUBLESHOOTING
@@ -422,7 +399,6 @@ internal fun settingsDeepLink(target: String): SettingsPage? = when (target) {
     "planning" -> SettingsPage.MODELS
     "voice" -> SettingsPage.VOICE
     "live", "live-mode" -> SettingsPage.LIVE_MODE
-    "telegram" -> SettingsPage.TELEGRAM
     "plugins", "plugin-manager" -> SettingsPage.PLUGINS
     "configuration", "config" -> SettingsPage.CONFIGURATION
     "agent" -> SettingsPage.AGENT
