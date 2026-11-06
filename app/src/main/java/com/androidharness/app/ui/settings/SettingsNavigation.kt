@@ -51,7 +51,7 @@ internal enum class SettingsPage(
         R.string.settings_page_coding_title,
         R.string.settings_page_coding_desc,
         R.string.settings_group_personalize,
-        "coding code agent subagent behavior chat commands skills codegraph caveman connected tools mcp telegram workspaces terminal device troubleshooting",
+        "coding code agent subagent behavior chat commands skills codegraph caveman workspaces terminal device troubleshooting",
     ),
     RUMBLE(
         R.string.settings_page_rumble_title,
@@ -203,7 +203,7 @@ internal enum class SettingsPage(
         R.string.settings_page_troubleshooting_title,
         R.string.settings_page_troubleshooting_desc,
         R.string.settings_group_app_data,
-        "diagnostics help doctor repair errors storage linux shizuku ssh mcp notifications provider report",
+        "diagnostics help doctor repair errors storage linux shizuku ssh notifications provider report",
     ),
     BACKUP(
         R.string.settings_page_backup_title,
