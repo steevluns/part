@@ -370,7 +370,7 @@ class AppContainer(val appContext: Context) {
                 runCatching { backgroundProcesses.killAll() }
                 AgentService.stop(appContext)
             }
-        })
+        }, onAvailable = {})
         // models.dev thinking-capability catalog: serve the cached copy
         // synchronously, then refresh in the background (daily cadence).
         com.androidharness.app.llm.ModelsDev.load(appContext)
