@@ -229,12 +229,6 @@ internal enum class SettingsPage(
         R.string.settings_group_app_data,
         "onboarding notifications permissions",
     ),
-    ABOUT(
-        R.string.settings_page_about_title,
-        R.string.settings_page_about_desc,
-        R.string.settings_group_app_data,
-        "about license mit copyright credits author sanuu github repository open source thanks",
-    ),
 }
 
 internal data class SettingsSearchEntry(
@@ -271,7 +265,7 @@ internal val settingsHomePages = listOf(
     SettingsPage.GITHUB, SettingsPage.SEARCH,
     SettingsPage.BACKGROUND, SettingsPage.STORAGE,
     SettingsPage.BACKUP, SettingsPage.USAGE, SettingsPage.TROUBLESHOOTING,
-    SettingsPage.UPDATES, SettingsPage.SETUP, SettingsPage.ABOUT,
+    SettingsPage.UPDATES, SettingsPage.SETUP,
 )
 
 /** Keep the account shortcut at the top without pulling every connection above the other sections. */
