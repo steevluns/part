@@ -126,6 +126,7 @@ internal fun EmptyState(
                     AgentAvatar(agent.avatar)
                     Spacer(Modifier.height(16.dp))
                 }
+                if (chatOnly) {
                 Text(
                     if (hasProvider && chatOnly && agent != null) agent.name else if (hasProvider) uiContext.getString(if (chatOnly) R.string.chat_empty_title else R.string.ui_what_do_you_want_to_build) else uiContext.getString(R.string.ui_connect_a_provider),
                     style = MaterialTheme.typography.headlineSmallEmphasized,
@@ -139,6 +140,7 @@ internal fun EmptyState(
                     color = scheme.onSurfaceVariant,
                     textAlign = TextAlign.Center,
                 )
+                }
                 if (hasProvider) {
                     Spacer(Modifier.height(28.dp))
                     Surface(
@@ -154,6 +156,7 @@ internal fun EmptyState(
                                 agentSetup()
                                 HorizontalDivider(color = scheme.outlineVariant.copy(alpha = 0.5f), modifier = Modifier.padding(start = 56.dp))
                             }
+                            if (chatOnly) {
                             suggestions.forEachIndexed { index, (icon, suggestion) ->
                                 AnimatedVisibility(
                                     visible = entered,
@@ -202,6 +205,7 @@ internal fun EmptyState(
                                         modifier = Modifier.padding(start = 56.dp),
                                     )
                                 }
+                            }
                             }
                             HorizontalDivider(color = scheme.outlineVariant)
                             DonationFundingNotice()
