@@ -32,7 +32,12 @@ jobs:
 
       - name: Install required Android SDK components
         run: |
-          sdkmanager --install "platforms;android-37" "ndk;27.2.12479018" "cmake;3.22.1"
+          sdkmanager --install "platforms;android-37.0" "ndk;27.2.12479018" "cmake;3.22.1"
+          # Android SDK publishes API 37 as android-37.0, while this project
+          # requests compileSdk 37 and AGP looks for the android-37 directory.
+          if [ -d "$ANDROID_SDK_ROOT/platforms/android-37.0" ] && [ ! -e "$ANDROID_SDK_ROOT/platforms/android-37" ]; then
+            ln -s android-37.0 "$ANDROID_SDK_ROOT/platforms/android-37"
+          fi
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
