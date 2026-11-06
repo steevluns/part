@@ -298,9 +298,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleSessionIntent(intent: Intent?) {
-        if (intent?.getStringExtra(com.androidharness.app.telegram.TelegramService.EXTRA_SETTINGS) == "telegram") {
-            container.pendingSettingsScroll.value = "telegram"
-        }
         val sessionId = intent?.getStringExtra(AgentService.EXTRA_SESSION_ID) ?: return
         intent.getStringExtra(AgentService.EXTRA_SUBAGENT_CALL_ID)?.let { callId ->
             container.pendingSubagentChat.value = sessionId to callId
