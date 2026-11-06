@@ -210,7 +210,7 @@ internal fun TroubleshootingSection(container: AppContainer, onOpen: (SettingsPa
         DiagnosticState.OFF -> uiContext.getString(R.string.ui_no_enabled_mcp_servers)
         DiagnosticState.CHECKING -> uiContext.getString(R.string.ui_a_server_is_connecting)
         else -> uiContext.getString(R.string.ui_some_enabled_servers_have_not_connected_yet)
-    }) { TextButton(onClick = { onOpen(SettingsPage.MCP) }) { Text(stringResource(R.string.settings_troubleshooting_manage_tools)) } }
+    }) { TextButton(onClick = { onOpen(SettingsPage.PLUGINS) }) { Text(stringResource(R.string.settings_troubleshooting_manage_tools)) } }
     DiagnosticCard(uiContext.getString(R.string.ui_notifications_optional), states.getValue(DiagnosticArea.NOTIFICATIONS),
         if (notifications) uiContext.getString(R.string.ui_notifications_are_allowed_by_android) else uiContext.getString(R.string.ui_you_can_use_the_app_with_notifications)) {
         TextButton(onClick = { context.startActivity(Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS)
