@@ -359,7 +359,7 @@ internal val settingsControlEntries: List<SettingsSearchEntry> = listOfNotNull(
     SettingsSearchEntry(
         R.string.settings_search_mcp_title,
         R.string.settings_search_mcp_desc,
-        SettingsPage.MCP,
+        SettingsPage.PLUGINS,
         "tools integrations server transport",
         anchor = R.string.settings_search_mcp_title,
     ),
@@ -423,19 +423,19 @@ internal val settingsControlEntries: List<SettingsSearchEntry> = listOfNotNull(
     SettingsSearchEntry(
         R.string.settings_search_license_title,
         R.string.settings_search_license_desc,
-        SettingsPage.ABOUT,
+        SettingsPage.UPDATES,
         "mit copyright permissive open source",
     ),
     SettingsSearchEntry(
         R.string.settings_search_credits_title,
         R.string.settings_search_credits_desc,
-        SettingsPage.ABOUT,
+        SettingsPage.UPDATES,
         "thanks acknowledgements inspirations projects",
     ),
     SettingsSearchEntry(
         R.string.settings_search_author_title,
         R.string.settings_search_author_desc,
-        SettingsPage.ABOUT,
+        SettingsPage.UPDATES,
         "sanuu github repository maintainer source code",
     ),
 
@@ -517,23 +517,23 @@ internal val settingsControlEntries: List<SettingsSearchEntry> = listOfNotNull(
     control(SettingsPage.WORKSPACE, R.string.settings_permissions_title, null,
         "remembered permissions always allow approvals grants revoke forget"),
     SettingsSearchEntry(
-        R.string.settings_mcp_add_title, R.string.settings_search_mcp_desc, SettingsPage.MCP,
+        R.string.settings_mcp_add_title, R.string.settings_search_mcp_desc, SettingsPage.PLUGINS,
         "mcp add new server tools integration connect", anchor = R.string.settings_action_add_server,
     ),
 
     // Connections
-    control(SettingsPage.TELEGRAM, R.string.settings_telegram_enable, null, "telegram bot enable on off turn"),
+    control(SettingsPage.CONNECTED_ACCOUNTS, R.string.settings_telegram_enable, null, "telegram bot enable on off turn"),
     SettingsSearchEntry(
-        R.string.settings_telegram_remote, R.string.settings_page_telegram_desc, SettingsPage.TELEGRAM,
+        R.string.settings_telegram_remote, R.string.settings_page_telegram_desc, SettingsPage.CONNECTED_ACCOUNTS,
         "telegram remote control bot phone away", anchor = R.string.settings_telegram_enable,
     ),
-    control(SettingsPage.TELEGRAM, R.string.settings_telegram_permissions, null, "telegram approvals permissions tools ask"),
+    control(SettingsPage.CONNECTED_ACCOUNTS, R.string.settings_telegram_permissions, null, "telegram approvals permissions tools ask"),
     control(SettingsPage.GITHUB, R.string.settings_github_repositories, null, "github import clone commit push repositories repo"),
     control(SettingsPage.NINE_ROUTER, R.string.nine_router_auto_start, null, "9router nine router auto start boot launch"),
     control(SettingsPage.CAVEMAN, R.string.ui_reply_intensity, null, "caveman intensity lite full ultra terse short replies"),
     control(SettingsPage.CAVEMAN, R.string.ui_coding_skills, null, "caveman coding skills commit messages reviews patches"),
     control(SettingsPage.CAVEMAN, R.string.ui_token_reports, null, "caveman tokens saved report"),
-    control(SettingsPage.FTP_SERVER, R.string.ftp_server_allow_lan, null, "ftp local network lan wifi other devices"),
+    control(SettingsPage.ENVIRONMENT, R.string.ftp_server_allow_lan, null, "ftp local network lan wifi other devices"),
 
     // App & data
     control(SettingsPage.BACKGROUND, R.string.background_android_title, R.string.background_android_description,
