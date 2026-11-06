@@ -389,7 +389,6 @@ class AgentService : Service() {
     private fun stopFromNotification() {
         scope.launch(Dispatchers.IO) {
             val container = (applicationContext as? HarnessApp)?.container
-            runCatching { container?.telegram?.stopAndPause() }
             runCatching { container?.runManager?.stopAllAndJoin() }
             runCatching { container?.terminal?.stopTerminal() }
             runCatching { container?.backgroundProcesses?.killAll() }
