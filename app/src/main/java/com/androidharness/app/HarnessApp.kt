@@ -194,12 +194,6 @@ class AppContainer(val appContext: Context) {
     }
 
     val updates = com.androidharness.app.data.update.UpdateManager(appContext, deviceAccess)
-    internal val sync by lazy { com.androidharness.app.data.transfer.SyncManager(keys, sshConnections) { fs, action ->
-        runManager.withIdleWorkspace(fs, "Stop running tasks in this workspace before syncing files.", action)
-    } }
-    internal val ftpShare by lazy { com.androidharness.app.data.transfer.FtpShareManager(appContext) { fs, action ->
-        runManager.withIdleWorkspace(fs, "Stop running tasks in this workspace before changing shared files.", action)
-    } }
     val backgroundProcesses = com.androidharness.app.data.BgProcessStore(
         appContext, linuxEnv, shizuku, workspaceRoot = workspace.appPrivateRoot, deviceAccess = deviceAccess,
     )
@@ -353,7 +347,6 @@ class AppContainer(val appContext: Context) {
     val githubRepositories = com.androidharness.app.github.GitHubWorkspaces(this)
     val automation = com.androidharness.app.automation.AutomationManager(this)
     val projectDeletion = com.androidharness.app.workspace.ProjectDeletion(this)
-    internal var telegram = com.androidharness.app.telegram.TelegramManager(this)
     val terminal = com.androidharness.app.data.TerminalManager(appContext, linuxEnv, shizuku, runManager, shellRouter)
     val storage = com.androidharness.app.data.storage.StorageManager(this)
     val projectChecks = com.androidharness.app.data.ProjectCheckStore(appContext, terminal)
@@ -373,13 +366,11 @@ class AppContainer(val appContext: Context) {
             runManager.stopIfBackgroundDisabled()
             if (!runtimePolicy.canRun()) {
                 // One unavailable device backend must not disable the policy observer.
-                runCatching { telegram.suspendForBackground() }
-                runCatching { ftpShare.stop() }
                 runCatching { terminal.stopTerminal() }
                 runCatching { backgroundProcesses.killAll() }
                 AgentService.stop(appContext)
             }
-        }, onAvailable = { telegram.restoreIfEnabled() })
+        })
         // models.dev thinking-capability catalog: serve the cached copy
         // synchronously, then refresh in the background (daily cadence).
         com.androidharness.app.llm.ModelsDev.load(appContext)
