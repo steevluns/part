@@ -26,6 +26,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: GameBooster-Windows
-          path: GameBooster/bin/Release/GameBooster.exe
+          path: bin/Release/GameBooster.exe
           if-no-files-found: error
           retention-days: 14
