@@ -1,0 +1,31 @@
+name: Build Game Booster (Windows)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build Windows application
+        shell: pwsh
+        run: msbuild GameBooster.csproj /m /p:Configuration=Release /p:Platform=AnyCPU /verbosity:minimal
+
+      - name: Upload EXE artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GameBooster-Windows
+          path: GameBooster/bin/Release/GameBooster.exe
+          if-no-files-found: error
+          retention-days: 14
